@@ -32,16 +32,34 @@ public class Peli {
         lisaaLuku();
     }
     
+    /**
+     * Palauttaa kentän koon.
+     * 
+     * @return Kentän koko
+     */
     public int getKentanKoko() {
         return this.kentanKoko;
     }
     
+    /**
+     * Palauttaa pelikentän.
+     * 
+     * Kenttä on taulukko kokonaislukutaulukoita. Ulomman taulukon, samoin kuin
+     * sisempien taulukoiden koko, on luku jonka kokoisena kenttä alustettiin.
+     * 
+     * @return Pelikenttä
+     */
     public int[][] getKentta() {
         return this.kentta;
     }
     
+    /**
+     * Yhdistää pelikentällä allekkain olevat samat luvut ylöspäin.
+     * 
+     * Jos päällekkäin on kolme kakkosta, ylimmäksi luvuksi tulee nelonen
+     * ja alimmaksi jää kakkonen.
+     */
     private void yhdistaYlos() {
-        /* yhdistetään allekkain olevat samat luvut */
         for (int y = 0; y < kentanKoko - 1; y++) {
             for (int x = 0; x < kentanKoko; x++) {
                 if (kentta[y][x] != 0) {
@@ -54,6 +72,12 @@ public class Peli {
         }
     }
     
+    /**
+     * Yhdistää pelikentällä allekkain olevat samat luvut alaspäin.
+     * 
+     * Jos päällekkäin on kolme kakkosta, alimmaksi luvuksi tulee nelonen
+     * ja ylimmäksi jää kakkonen.
+     */
     private void yhdistaAlas() {
         /* yhdistetään allekkain olevat samat luvut */
         for (int y = kentanKoko - 1; y > 0; y--) {
@@ -68,6 +92,12 @@ public class Peli {
         }
     }
     
+    /**
+     * Yhdistää pelikentällä vierekkäin olevat samat luvut vasemmalle.
+     * 
+     * Jos vierekkäin on kolme kakkosta, vasemmanpuoleiseksi tulee nelonen
+     * ja nelosen oikealle puolelle kakkonen.
+     */
     private void yhdistaVasemmalle() {
         /* yhdistetään vierekkäin olevat samat luvut */
         for (int x = 0; x < kentanKoko - 1; x++) {
@@ -82,8 +112,13 @@ public class Peli {
         }
     }
     
+    /**
+     * Yhdistää pelikentällä vierekkäin olevat samat luvut oikealle.
+     * 
+     * Jos vierekkäin on kolme kakkosta, oikeanpuoleiseksi tulee nelonen
+     * ja nelosen vasemmalle puolelle kakkonen. 
+     */
     private void yhdistaOikealle() {
-        /* yhdistetään vierekkäin olevat samat luvut */
         for (int x = kentanKoko - 1; x > 0; x--) {
             for (int y = 0; y < kentanKoko; y++) {
                 if (kentta[y][x] != 0) {
@@ -96,6 +131,13 @@ public class Peli {
         }
     }
     
+    /**
+     * Siirtää lukuja ylöspäin niin paljon kuin mahtuu.
+     * 
+     * Jokainen ruutu käydään läpi alkaen ylärivistä, jolloin voidaan
+     * olla varmoja että pystysuunnassa ei jää tyhjiä aukkoja. Metodi
+     * ei yhdistä törmääviä samoja lukuja.
+     */
     private void siirraYlospain() {
         for (int y = 0; y < kentanKoko; y++) {
             for (int x = 0; x < kentanKoko; x++) {
@@ -115,8 +157,14 @@ public class Peli {
         }
     }
     
+    /** 
+     * Siirtää lukuja alaspäin niin paljon kuin mahtuu.
+     * 
+     * Jokainen ruutu käydään läpi alkaen alarivistä, jolloin voidaan
+     * olla varmoja että pystysuunnassa ei jää tyhjiä aukkoja. Metodi
+     * ei yhdistä törmääviä samoja lukuja.
+     */
     private void siirraAlaspain() {
-        /* siirretään lukuja niin paljon kuin mahtuu, ei yhdistetä vielä */
         for (int y = kentanKoko - 1; y >= 0; y--) {
             for (int x = 0; x < kentanKoko; x++) {
                 if (kentta[y][x] != 0) {
@@ -135,6 +183,13 @@ public class Peli {
         }
     }
     
+    /**
+     * Siirtää lukuja vasemmalle niin paljon kuin mahtuu.
+     * 
+     * Jokainen ruutu käydään läpi alkaen vasemmanpuoleisesta sarakkeesta,
+     * jolloin voidaan olla varmoja että vaakasuunnassa ei jää tyhjiä aukkoja.
+     * Metodi ei yhdistä törmääviä samoja lukuja.
+     */
     private void siirraVasemmalle() {
         for (int x = 0; x < kentanKoko; x++) {
             for (int y = 0; y < kentanKoko; y++) {
@@ -154,6 +209,13 @@ public class Peli {
         }
     }
     
+    /**
+     * Siirtää lukuja oikealle niin paljon kuin mahtuu.
+     * 
+     * Jokainen ruutu käydään läpi alkaen oikeanpuoleisesta sarakkeesta,
+     * jolloin voidaan olla varmoja että vaakasuunnassa ei jää tyhjiä aukkoja.
+     * Metodi ei yhdistä törmääviä samoja lukuja. 
+     */
     private void siirraOikealle() {
         /* siirretään lukuja niin paljon kuin mahtuu, ei yhdistetä vielä */
         for (int x = kentanKoko - 1; x >= 0; x--) {
@@ -174,6 +236,12 @@ public class Peli {
         }
     }
     
+    /**
+     * Siirto ylöspäin.
+     * 
+     * Luvut siirretään niin ylös kuin ne mahtuu ja törmäävät
+     * samat luvut yhdistetään. 
+     */
     public void ylos() {
         siirraYlospain();
         yhdistaYlos();
@@ -182,6 +250,12 @@ public class Peli {
         lisaaLuku();
     }
     
+    /**
+     * Siirto alaspäin.
+     * 
+     * Luvut siirretään niin alas kuin ne mahtuu ja törmäävät
+     * samat luvut yhdistetään.
+     */
     public void alas() {
         siirraAlaspain();
         yhdistaAlas();
@@ -190,6 +264,12 @@ public class Peli {
         lisaaLuku();
     }
     
+    /**
+     * Siirto oikealle.
+     * 
+     * Luvut siirretään niin paljon oikealle kuin ne mahtuu ja törmäävät
+     * samat luvut yhdistetään.
+     */
     public void oikea() {
         siirraOikealle();
         yhdistaOikealle();
@@ -198,6 +278,12 @@ public class Peli {
         lisaaLuku();
     }
     
+    /**
+     * Siirto vasemmalle.
+     * 
+     * Luvut siirretään niin paljon vasemmalle kuin ne mahtuu ja törmäävät
+     * samat luvut yhdistetään.
+     */
     public void vasen() {
         siirraVasemmalle();
         yhdistaVasemmalle();
@@ -207,7 +293,9 @@ public class Peli {
     }
     
     /**
-     * Lisää luvun satunnaiseen tyhjään ruutuun
+     * Lisää luvun satunnaiseen tyhjään ruutuun.
+     * 
+     * Uusi luku on 10% todennäköisyydellä 4 ja 90% todennäköisyydellä 2. 
      */
     public void lisaaLuku() {
         int uusiLuku = 2;
