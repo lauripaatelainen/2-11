@@ -172,7 +172,7 @@ public class PeliTest {
     }
     
     @Test
-    public void eiYhdistyKahtaKertaa() {
+    public void eiYhdistyKahtaKertaaYlos() {
         Peli peli = new Peli(4);
         int[][] kentta = peli.getKentta();
         nollaaKentta(kentta);
@@ -191,5 +191,209 @@ public class PeliTest {
         peli.ylos();
         
         assertEquals("Ruudun arvo ei täsmää", 8, kentta[0][0]);
+    }
+    
+    
+    @Test
+    public void testaaLukujenYhdistysAlas() {
+        Peli peli = new Peli(4);
+        int[][] kentta = peli.getKentta();
+        nollaaKentta(kentta);
+        
+        kentta[0][0] = 2;
+        kentta[1][0] = 2;
+        
+        kentta[1][1] = 4;
+        kentta[3][1] = 4;
+        
+        kentta[0][2] = 8;
+        kentta[2][2] = 8;
+        
+        kentta[2][3] = 512;
+        kentta[3][3] = 512;
+        
+        peli.alas();
+        
+        assertEquals("Tyhjien ruutujen määrä ei täsmää", 11, laskeTyhjat(kentta));
+        assertEquals("Ruudun arvo ei täsmää", 4, kentta[3][0]);
+        assertEquals("Ruudun arvo ei täsmää", 8, kentta[3][1]);
+        assertEquals("Ruudun arvo ei täsmää", 16, kentta[3][2]);
+        assertEquals("Ruudun arvo ei täsmää", 1024, kentta[3][3]);
+    }
+    
+    @Test
+    public void testaaLukujenYhdistysAlas2() {
+        Peli peli = new Peli(4);
+        int[][] kentta = peli.getKentta();
+        nollaaKentta(kentta);
+        
+        kentta[0][0] = 4;
+        kentta[1][0] = 2;
+        kentta[2][0] = 2;
+        kentta[3][0] = 2;
+        
+        peli.alas();
+        assertEquals("Tyhjien ruutujen määrä ei täsmää", 12, laskeTyhjat(kentta));
+        assertEquals("Ruudun arvo ei täsmää", 4, kentta[3][0]);
+        assertEquals("Ruudun arvo ei täsmää", 2, kentta[2][0]);
+        assertEquals("Ruudun arvo ei täsmää", 4, kentta[1][0]);
+    }
+    
+    @Test
+    public void eiYhdistyKahtaKertaaAlas() {
+        Peli peli = new Peli(4);
+        int[][] kentta = peli.getKentta();
+        nollaaKentta(kentta);
+        
+        kentta[0][0] = 2;
+        kentta[1][0] = 2;
+        kentta[2][0] = 2;
+        kentta[3][0] = 2;
+        
+        peli.alas();
+        
+        assertEquals("Tyhjien ruutujen määrä ei täsmää", 13, laskeTyhjat(kentta));
+        assertEquals("Ruudun arvo ei täsmää", 4, kentta[3][0]);
+        assertEquals("Ruudun arvo ei täsmää", 4, kentta[2][0]);
+        
+        peli.alas();
+        
+        assertEquals("Ruudun arvo ei täsmää", 8, kentta[3][0]);
+    }
+    
+    
+    
+    @Test
+    public void testaaLukujenYhdistysVasemmalle() {
+        Peli peli = new Peli(4);
+        int[][] kentta = peli.getKentta();
+        nollaaKentta(kentta);
+        
+        kentta[0][0] = 2;
+        kentta[0][1] = 2;
+        
+        kentta[1][1] = 4;
+        kentta[1][3] = 4;
+        
+        kentta[2][0] = 8;
+        kentta[2][2] = 8;
+        
+        kentta[3][2] = 512;
+        kentta[3][3] = 512;
+        
+        peli.vasen();
+        assertEquals("Tyhjien ruutujen määrä ei täsmää", 11, laskeTyhjat(kentta));
+        assertEquals("Ruudun arvo ei täsmää", 4, kentta[0][0]);
+        assertEquals("Ruudun arvo ei täsmää", 8, kentta[1][0]);
+        assertEquals("Ruudun arvo ei täsmää", 16, kentta[2][0]);
+        assertEquals("Ruudun arvo ei täsmää", 1024, kentta[3][0]);
+    }
+    
+    @Test
+    public void testaaLukujenYhdistysVasemmalle2() {
+        Peli peli = new Peli(4);
+        int[][] kentta = peli.getKentta();
+        nollaaKentta(kentta);
+        
+        kentta[0][0] = 2;
+        kentta[0][1] = 2;
+        kentta[0][2] = 2;
+        kentta[0][3] = 4;
+        
+        peli.vasen();
+        assertEquals("Tyhjien ruutujen määrä ei täsmää", 12, laskeTyhjat(kentta));
+        assertEquals("Ruudun arvo ei täsmää", 4, kentta[0][0]);
+        assertEquals("Ruudun arvo ei täsmää", 2, kentta[0][1]);
+        assertEquals("Ruudun arvo ei täsmää", 4, kentta[0][2]);
+    }
+    
+    @Test
+    public void eiYhdistyKahtaKertaaVasemmalle() {
+        Peli peli = new Peli(4);
+        int[][] kentta = peli.getKentta();
+        nollaaKentta(kentta);
+        
+        kentta[0][0] = 2;
+        kentta[0][1] = 2;
+        kentta[0][2] = 2;
+        kentta[0][3] = 2;
+        
+        peli.vasen();
+        
+        assertEquals("Tyhjien ruutujen määrä ei täsmää", 13, laskeTyhjat(kentta));
+        assertEquals("Ruudun arvo ei täsmää", 4, kentta[0][0]);
+        assertEquals("Ruudun arvo ei täsmää", 4, kentta[0][1]);
+        
+        peli.vasen();
+        
+        assertEquals("Ruudun arvo ei täsmää", 8, kentta[0][0]);
+    }
+    
+    
+    @Test
+    public void testaaLukujenYhdistysOikealle() {
+        Peli peli = new Peli(4);
+        int[][] kentta = peli.getKentta();
+        nollaaKentta(kentta);
+        
+        kentta[0][0] = 2;
+        kentta[0][1] = 2;
+        
+        kentta[1][1] = 4;
+        kentta[1][3] = 4;
+        
+        kentta[2][0] = 8;
+        kentta[2][2] = 8;
+        
+        kentta[3][2] = 512;
+        kentta[3][3] = 512;
+        
+        peli.oikea();
+        
+        assertEquals("Tyhjien ruutujen määrä ei täsmää", 11, laskeTyhjat(kentta));
+        assertEquals("Ruudun arvo ei täsmää", 4, kentta[0][3]);
+        assertEquals("Ruudun arvo ei täsmää", 8, kentta[1][3]);
+        assertEquals("Ruudun arvo ei täsmää", 16, kentta[2][3]);
+        assertEquals("Ruudun arvo ei täsmää", 1024, kentta[3][3]);
+    }
+    
+    @Test
+    public void testaaLukujenYhdistysOikealle2() {
+        Peli peli = new Peli(4);
+        int[][] kentta = peli.getKentta();
+        nollaaKentta(kentta);
+        
+        kentta[0][0] = 4;
+        kentta[0][1] = 2;
+        kentta[0][2] = 2;
+        kentta[0][3] = 2;
+        
+        peli.oikea();
+        assertEquals("Tyhjien ruutujen määrä ei täsmää", 12, laskeTyhjat(kentta));
+        assertEquals("Ruudun arvo ei täsmää", 4, kentta[0][3]);
+        assertEquals("Ruudun arvo ei täsmää", 2, kentta[0][2]);
+        assertEquals("Ruudun arvo ei täsmää", 4, kentta[0][1]);
+    }
+    
+    @Test
+    public void eiYhdistyKahtaKertaaOikealle() {
+        Peli peli = new Peli(4);
+        int[][] kentta = peli.getKentta();
+        nollaaKentta(kentta);
+        
+        kentta[0][0] = 2;
+        kentta[0][1] = 2;
+        kentta[0][2] = 2;
+        kentta[0][3] = 2;
+        
+        peli.oikea();
+        
+        assertEquals("Tyhjien ruutujen määrä ei täsmää", 13, laskeTyhjat(kentta));
+        assertEquals("Ruudun arvo ei täsmää", 4, kentta[0][3]);
+        assertEquals("Ruudun arvo ei täsmää", 4, kentta[0][2]);
+        
+        peli.oikea();
+        
+        assertEquals("Ruudun arvo ei täsmää", 8, kentta[0][3]);
     }
 }

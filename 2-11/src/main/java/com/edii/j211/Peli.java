@@ -40,25 +40,7 @@ public class Peli {
         return this.kentta;
     }
     
-    public void ylos() {
-        /* siirretään lukuja niin paljon kuin mahtuu, ei yhdistetä vielä */
-        for (int y = 0; y < kentanKoko; y++) {
-            for (int x = 0; x < kentanKoko; x++) {
-                if (kentta[y][x] != 0) {
-                    int y2 = y;
-                    while (y2 > 0) {
-                        if (kentta[y2 - 1][x] == 0) {
-                            kentta[y2 - 1][x] = kentta[y2][x];
-                            kentta[y2][x] = 0;
-                            y2--;
-                        } else {
-                            break;
-                        }
-                    }
-                }
-            }
-        }
-        
+    private void yhdistaYlos() {
         /* yhdistetään allekkain olevat samat luvut */
         for (int y = 0; y < kentanKoko - 1; y++) {
             for (int x = 0; x < kentanKoko; x++) {
@@ -70,8 +52,51 @@ public class Peli {
                 }
             }
         }
-        
-        /* siirretään lukuja uudestaan niin paljon kuin mahtuu */
+    }
+    
+    private void yhdistaAlas() {
+        /* yhdistetään allekkain olevat samat luvut */
+        for (int y = kentanKoko - 1; y > 0; y--) {
+            for (int x = 0; x < kentanKoko; x++) {
+                if (kentta[y][x] != 0) {
+                    if (kentta[y - 1][x] == kentta[y][x]) {
+                        kentta[y][x] *= 2;
+                        kentta[y - 1][x] = 0;
+                    }
+                }
+            }
+        }
+    }
+    
+    private void yhdistaVasemmalle() {
+        /* yhdistetään vierekkäin olevat samat luvut */
+        for (int x = 0; x < kentanKoko - 1; x++) {
+            for (int y = 0; y < kentanKoko; y++) {
+                if (kentta[y][x] != 0) {
+                    if (kentta[y][x + 1] == kentta[y][x]) {
+                        kentta[y][x] *= 2;
+                        kentta[y][x + 1] = 0;
+                    }
+                }
+            }
+        }
+    }
+    
+    private void yhdistaOikealle() {
+        /* yhdistetään vierekkäin olevat samat luvut */
+        for (int x = kentanKoko - 1; x > 0; x--) {
+            for (int y = 0; y < kentanKoko; y++) {
+                if (kentta[y][x] != 0) {
+                    if (kentta[y][x - 1] == kentta[y][x]) {
+                        kentta[y][x] *= 2;
+                        kentta[y][x - 1] = 0;
+                    }
+                }
+            }
+        }
+    }
+    
+    private void siirraYlospain() {
         for (int y = 0; y < kentanKoko; y++) {
             for (int x = 0; x < kentanKoko; x++) {
                 if (kentta[y][x] != 0) {
@@ -88,20 +113,97 @@ public class Peli {
                 }
             }
         }
+    }
+    
+    private void siirraAlaspain() {
+        /* siirretään lukuja niin paljon kuin mahtuu, ei yhdistetä vielä */
+        for (int y = kentanKoko - 1; y >= 0; y--) {
+            for (int x = 0; x < kentanKoko; x++) {
+                if (kentta[y][x] != 0) {
+                    int y2 = y;
+                    while (y2 < kentanKoko - 1) {
+                        if (kentta[y2 + 1][x] == 0) {
+                            kentta[y2 + 1][x] = kentta[y2][x];
+                            kentta[y2][x] = 0;
+                            y2++;
+                        } else {
+                            break;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    
+    private void siirraVasemmalle() {
+        for (int x = 0; x < kentanKoko; x++) {
+            for (int y = 0; y < kentanKoko; y++) {
+                if (kentta[y][x] != 0) {
+                    int x2 = x;
+                    while (x2 > 0) {
+                        if (kentta[y][x2 - 1] == 0) {
+                            kentta[y][x2 - 1] = kentta[y][x2];
+                            kentta[y][x2] = 0;
+                            x2--;
+                        } else {
+                            break;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    
+    private void siirraOikealle() {
+        /* siirretään lukuja niin paljon kuin mahtuu, ei yhdistetä vielä */
+        for (int x = kentanKoko - 1; x >= 0; x--) {
+            for (int y = 0; y < kentanKoko; y++) {
+                if (kentta[y][x] != 0) {
+                    int x2 = x;
+                    while (x2 < kentanKoko - 1) {
+                        if (kentta[y][x2 + 1] == 0) {
+                            kentta[y][x2 + 1] = kentta[y][x2];
+                            kentta[y][x2] = 0;
+                            x2++;
+                        } else {
+                            break;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    
+    public void ylos() {
+        siirraYlospain();
+        yhdistaYlos();
+        siirraYlospain();
         
         lisaaLuku();
     }
     
     public void alas() {
+        siirraAlaspain();
+        yhdistaAlas();
+        siirraAlaspain();
         
+        lisaaLuku();
     }
     
     public void oikea() {
+        siirraOikealle();
+        yhdistaOikealle();
+        siirraOikealle();
         
+        lisaaLuku();
     }
     
     public void vasen() {
+        siirraVasemmalle();
+        yhdistaVasemmalle();
+        siirraVasemmalle();
         
+        lisaaLuku();
     }
     
     /**
