@@ -37,6 +37,7 @@
                 <configuration>
                     <excludedClasses>
                         <param>com.edii.j211.Main</param>
+                        <param>com.edii.j211.Tekstikayttoliittyma</param>
                     </excludedClasses>
                 </configuration>
             </plugin>

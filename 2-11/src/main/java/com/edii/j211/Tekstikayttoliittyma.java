@@ -1,6 +1,7 @@
 package com.edii.j211;
 
 import java.io.PrintStream;
+import java.util.Arrays;
 import java.util.Scanner;
 
 /**
@@ -46,12 +47,74 @@ public class Tekstikayttoliittyma {
     }
     
     /**
+     * Lukee käyttäjältä valinnan annetuista vaihtoehdoista. 
+     * 
+     * Lukee niin pitkään, kunnes kelvollinen luku on annettu. Ei heitä virheitä. 
+     * 
+     * Sisäinen metodi tekstikäyttöliitymän toteutusta varten.
+     * 
+     * @param kehote Käyttäjälle näytettävä kehote
+     * @return Luettu valinta
+     */
+    public String lueValinta(String kehote, String[] vaihtoehdot) {
+        while (true) {
+            out.print(kehote + "(" + vaihtoehdot[0]);
+            for (int i = 1; i < vaihtoehdot.length; i++) {
+                out.print("/" + vaihtoehdot[i]);
+            }
+            out.print("): ");
+            String rivi = in.nextLine();
+            try {
+                for (String vaihtoehto : vaihtoehdot) {
+                    if (vaihtoehto.equals(rivi)) {
+                        return vaihtoehto;
+                    }
+                }
+            } catch (NumberFormatException e) {
+            /* suorita luuppi uudestaan */
+            }
+        }
+    }
+    
+    /**
+     * Tulostaa parametrina annetun kentän.
+     * 
+     * @param kentta Tulostettava kenttä
+     */
+    public void tulostaKentta(int[][] kentta) {
+        for (int y = 0; y < kentta.length; y++) {
+            String rivi = "";
+            for (int x = 0; x < kentta.length; x++) {
+                rivi += kentta[y][x] + " ";
+            }
+            out.println(rivi);
+        }
+    }
+    
+    /**
      * Käynnistää pelin. Käyttöliittymä pyytää käyttäjältä kentän koon,
      * jonka jälkeen peli aloitetaan. Metodi lopettaa suorituksen vasta
      * kun peli päättyy. 
      */
     public void kaynnista() {
         int kentanKoko = lueKokonaisluku("Anna kentän koko");
+        Peli peli = new Peli(kentanKoko);
+        int[][] kentta = peli.getKentta();
         
+        while(true) {
+            tulostaKentta(kentta);
+            String valinta = lueValinta("Valinta", new String[] {"alas", "ylös", "vasen", "oikea", "lopeta"});
+            if (valinta.equals("lopeta")) {
+                break;
+            } else if (valinta.equals("ylös")) {
+                peli.ylos();
+            } else if (valinta.equals("alas")) {
+                peli.alas();
+            } else if (valinta.equals("vasen")) {
+                peli.vasen();
+            } else if (valinta.equals("oikea")) {
+                peli.oikea();
+            }
+        }
     }
 }
