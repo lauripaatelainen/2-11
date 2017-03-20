@@ -1,8 +1,8 @@
 package com.edii.j211.textui;
 
 import com.edii.j211.logiikka.Peli;
+import com.edii.j211.logiikka.Pelikentta;
 import java.io.PrintStream;
-import java.util.Arrays;
 import java.util.Scanner;
 
 /**
@@ -82,11 +82,11 @@ public class Tekstikayttoliittyma {
      * 
      * @param kentta Tulostettava kenttä
      */
-    public void tulostaKentta(int[][] kentta) {
-        for (int y = 0; y < kentta.length; y++) {
+    public void tulostaKentta(Pelikentta kentta) {
+        for (int y = 0; y < kentta.getKentanKoko(); y++) {
             String rivi = "";
-            for (int x = 0; x < kentta.length; x++) {
-                rivi += kentta[y][x] + " ";
+            for (int x = 0; x < kentta.getKentanKoko(); x++) {
+                rivi += kentta.ruudunArvo(x, y) + " ";
             }
             out.println(rivi);
         }
@@ -100,9 +100,9 @@ public class Tekstikayttoliittyma {
     public void kaynnista() {
         int kentanKoko = lueKokonaisluku("Anna kentän koko");
         Peli peli = new Peli(kentanKoko);
-        int[][] kentta = peli.getKentta();
+        Pelikentta kentta = peli.getKentta();
         
-        while(true) {
+        while (true) {
             tulostaKentta(kentta);
             String valinta = lueValinta("Valinta", new String[] {"alas", "ylös", "vasen", "oikea", "lopeta"});
             if (valinta.equals("lopeta")) {
