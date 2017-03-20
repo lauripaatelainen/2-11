@@ -1,4 +1,4 @@
-package com.edii.j211;
+package com.edii.j211.logiikka;
 
 import java.util.ArrayList;
 import java.util.List;

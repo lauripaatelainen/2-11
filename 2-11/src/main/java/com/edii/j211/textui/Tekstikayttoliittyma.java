@@ -1,5 +1,6 @@
-package com.edii.j211;
+package com.edii.j211.textui;
 
+import com.edii.j211.logiikka.Peli;
 import java.io.PrintStream;
 import java.util.Arrays;
 import java.util.Scanner;

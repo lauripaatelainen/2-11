@@ -3,8 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.edii.j211;
+package com.edii.j211.textui;
 
+import com.edii.j211.textui.Tekstikayttoliittyma;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 import java.util.Random;

@@ -1,5 +1,6 @@
 package com.edii.j211;
 
+import com.edii.j211.textui.Tekstikayttoliittyma;
 import java.util.Scanner;
 
 /**
