@@ -3,7 +3,6 @@ package com.edii.j211.textui;
 import com.edii.j211.logiikka.Peli;
 import com.edii.j211.logiikka.Pelikentta;
 import com.edii.j211.logiikka.impl.PeliImpl;
-import com.edii.j211.logiikka.impl.PelikenttaImpl;
 import java.io.PrintStream;
 import java.util.Scanner;
 

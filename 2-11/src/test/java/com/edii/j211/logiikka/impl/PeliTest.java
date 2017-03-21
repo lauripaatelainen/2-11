@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.edii.j211.logiikka;
+package com.edii.j211.logiikka.impl;
 
 import com.edii.j211.logiikka.impl.PelikenttaImpl;
 import com.edii.j211.logiikka.impl.PeliImpl;

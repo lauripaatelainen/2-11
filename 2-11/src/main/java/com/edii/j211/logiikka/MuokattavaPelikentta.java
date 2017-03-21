@@ -13,4 +13,5 @@ import com.edii.j211.logiikka.Pelikentta;
  */
 public interface MuokattavaPelikentta extends Pelikentta {
     public void asetaArvo(int x, int y, int arvo);
+    public void tyhjenna();
 }
