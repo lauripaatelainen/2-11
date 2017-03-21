@@ -5,6 +5,7 @@
  */
 package com.edii.j211.logiikka.impl;
 
+import com.edii.j211.logiikka.Peli;
 import com.edii.j211.logiikka.Pelikentta;
 import org.junit.After;
 import org.junit.AfterClass;
@@ -65,7 +66,7 @@ public class PeliTest {
         int kakkostenMaara = 0;
         for (int i = 0; i < 10000; i++) {
             for (int koko = 2; koko <= 10; koko++) {
-                PeliImpl peli = new PeliImpl(koko);
+                Peli peli = new PeliImpl(koko);
 
                 Pelikentta kentta = peli.pelikentta();
                 int tyhjienMaara = 0;
