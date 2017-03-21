@@ -5,16 +5,12 @@
  */
 package com.edii.j211.logiikka;
 
+import com.edii.j211.logiikka.Pelikentta;
+
 /**
  *
  * @author edii
  */
-public interface Peli {
-    public int koko();
-    public Pelikentta pelikentta();
-    
-    public void ylos();
-    public void alas();
-    public void oikea();
-    public void vasen();
+public interface MuokattavaPelikentta extends Pelikentta {
+    public void asetaArvo(int x, int y, int arvo);
 }
