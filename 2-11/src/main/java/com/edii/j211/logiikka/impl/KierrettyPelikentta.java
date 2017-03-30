@@ -28,11 +28,6 @@ public class KierrettyPelikentta implements MuokattavaPelikentta {
     }
 
     @Override
-    public void tyhjenna() {
-        kentta.tyhjenna();
-    }
-
-    @Override
     public int koko() {
         return kentta.koko();
     }
@@ -40,21 +35,5 @@ public class KierrettyPelikentta implements MuokattavaPelikentta {
     @Override
     public int arvo(int x, int y) {
         return kentta.arvo(y, koko() - 1 - x);
-    }
-
-    @Override
-    public int[][] tyhjat() {
-        List<int[]> out = new ArrayList<>();
-        
-        for (int y = 0; y < koko(); y++) {
-            for (int x = 0; x < koko(); x++) {
-                if (arvo(x, y) == 0) {
-                    out.add(new int[] { x, y });
-                }
-            }
-        }
-        
-        int[][] outArr = new int[out.size()][];
-        return out.toArray(outArr);
-    }
+    } 
 }

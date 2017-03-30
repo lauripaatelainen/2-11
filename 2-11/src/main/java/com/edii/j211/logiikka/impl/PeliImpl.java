@@ -14,7 +14,7 @@ public class PeliImpl implements Peli {
     private PelikenttaImpl kentta;
     private Random random;
     private Siirtaja siirtaja;
-    private int pisteet = 0;
+    private int pisteet;
 
     /**
      * Luo annetun kokoisen pelikentän. Luodussa pelikentässä on ensimmäinen
@@ -30,6 +30,7 @@ public class PeliImpl implements Peli {
         this.kentta = new PelikenttaImpl(kentanKoko);
         this.siirtaja = new Siirtaja(this.kentta);
         this.random = new Random();
+        this.pisteet = 0;
 
         lisaaLuku();
     }
@@ -72,7 +73,7 @@ public class PeliImpl implements Peli {
     public void ylos() {
         boolean siirretty = this.siirtaja.siirraYlospain();
         int pisteet = this.siirtaja.yhdistaYlos();
-        siirretty |= this.siirtaja.siirraYlospain();
+        this.siirtaja.siirraYlospain();
 
         if (siirretty || pisteet > 0) {
             lisaaLuku();
@@ -89,11 +90,15 @@ public class PeliImpl implements Peli {
      */
     @Override
     public void alas() {
-        this.siirtaja.siirraAlaspain();
-        this.siirtaja.yhdistaAlas();
+        boolean siirretty = this.siirtaja.siirraAlaspain();
+        int pisteet = this.siirtaja.yhdistaAlas();
         this.siirtaja.siirraAlaspain();
 
-        lisaaLuku();
+        if (siirretty || pisteet > 0) {
+            lisaaLuku();
+        }
+        
+        setPisteet(getPisteet() + pisteet);
     }
 
     /**
@@ -104,11 +109,15 @@ public class PeliImpl implements Peli {
      */
     @Override
     public void oikea() {
-        this.siirtaja.siirraOikealle();
-        this.siirtaja.yhdistaOikealle();
+        boolean siirretty = this.siirtaja.siirraOikealle();
+        int pisteet = this.siirtaja.yhdistaOikealle();
         this.siirtaja.siirraOikealle();
 
-        lisaaLuku();
+        if (siirretty || pisteet > 0) {
+            lisaaLuku();
+        }
+        
+        setPisteet(getPisteet() + pisteet);
     }
 
     /**
@@ -119,11 +128,15 @@ public class PeliImpl implements Peli {
      */
     @Override
     public void vasen() {
-        this.siirtaja.siirraVasemmalle();
-        this.siirtaja.yhdistaVasemmalle();
+        boolean siirretty = this.siirtaja.siirraVasemmalle();
+        int pisteet = this.siirtaja.yhdistaVasemmalle();
         this.siirtaja.siirraVasemmalle();
 
-        lisaaLuku();
+        if (siirretty || pisteet > 0) {
+            lisaaLuku();
+        }
+        
+        setPisteet(getPisteet() + pisteet);
     }
 
     /**
@@ -132,7 +145,7 @@ public class PeliImpl implements Peli {
      * Uusi luku on 10% todennäköisyydellä 4 ja 90% todennäköisyydellä 2.
      */
     public final void lisaaLuku() {
-        int[][] tyhjat = kentta.tyhjat();
+        int[][] tyhjat = Util.tyhjat(kentta);
         if (tyhjat.length > 0) {
             int[] valinta = tyhjat[random.nextInt(tyhjat.length)];
             
