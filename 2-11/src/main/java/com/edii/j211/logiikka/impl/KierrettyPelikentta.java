@@ -1,0 +1,60 @@
+package com.edii.j211.logiikka.impl;
+
+import com.edii.j211.logiikka.MuokattavaPelikentta;
+import java.util.ArrayList;
+import java.util.List;
+
+/**
+ * Käytettään Siirtäjän sisällä yksinkertaistamaan eri siirto-operaatioita.
+ * 
+ * KierrettyPelikentta on 90 astetta myötäpäivään kierretty versio annetusta
+ * pelikentästä. Muutokset kierrettyyn pelikenttään vaikuttavat
+ * myös alkuperäiseen pelikenttään. Esim. jos 4 kokoisen kierretyn pelikentän
+ * vasemman ylänurkan arvoa muutetaan, muuttaa se alkuperäisessä pelikentässä 
+ * oikean ylänurkan arvoa. 
+ * 
+ * @author edii
+ */
+public class KierrettyPelikentta implements MuokattavaPelikentta {
+    private MuokattavaPelikentta kentta;
+    
+    public KierrettyPelikentta(MuokattavaPelikentta pelikentta) {
+        this.kentta = pelikentta;
+    }
+    
+    @Override
+    public void asetaArvo(int x, int y, int arvo) {
+        kentta.asetaArvo(y, koko() - 1 - x, arvo);
+    }
+
+    @Override
+    public void tyhjenna() {
+        kentta.tyhjenna();
+    }
+
+    @Override
+    public int koko() {
+        return kentta.koko();
+    }
+
+    @Override
+    public int arvo(int x, int y) {
+        return kentta.arvo(y, koko() - 1 - x);
+    }
+
+    @Override
+    public int[][] tyhjat() {
+        List<int[]> out = new ArrayList<>();
+        
+        for (int y = 0; y < koko(); y++) {
+            for (int x = 0; x < koko(); x++) {
+                if (arvo(x, y) == 0) {
+                    out.add(new int[] { x, y });
+                }
+            }
+        }
+        
+        int[][] outArr = new int[out.size()][];
+        return out.toArray(outArr);
+    }
+}

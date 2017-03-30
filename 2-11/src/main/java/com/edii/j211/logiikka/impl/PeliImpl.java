@@ -14,6 +14,7 @@ public class PeliImpl implements Peli {
     private PelikenttaImpl kentta;
     private Random random;
     private Siirtaja siirtaja;
+    private int pisteet = 0;
 
     /**
      * Luo annetun kokoisen pelikentän. Luodussa pelikentässä on ensimmäinen
@@ -32,7 +33,15 @@ public class PeliImpl implements Peli {
 
         lisaaLuku();
     }
+    
+    public int getPisteet() {
+        return pisteet;
+    }
 
+    public void setPisteet(int pisteet) {
+        this.pisteet = pisteet;
+    }
+    
     /**
      * Palauttaa kentän koon.
      *
@@ -61,11 +70,15 @@ public class PeliImpl implements Peli {
      */
     @Override
     public void ylos() {
-        this.siirtaja.siirraYlospain();
-        this.siirtaja.yhdistaYlos();
-        this.siirtaja.siirraYlospain();
+        boolean siirretty = this.siirtaja.siirraYlospain();
+        int pisteet = this.siirtaja.yhdistaYlos();
+        siirretty |= this.siirtaja.siirraYlospain();
 
-        lisaaLuku();
+        if (siirretty || pisteet > 0) {
+            lisaaLuku();
+        }
+        
+        setPisteet(getPisteet() + pisteet);
     }
 
     /**
