@@ -14,4 +14,4 @@ Peliä käyttää vain yksi pelaaja kerrallaan, ja ainoa toiminto jonka pelaaja 
 
 ## Ohjelman rakenne
 
-![Määrittelyvaiheen luokkakaavio](211-määrittelyvaiheen-luokkakaavio.png "Määrittelyvaiheen luokkakaavio")
+![Määrittelyvaiheen luokkakaavio](211-luokkakaavio.png "Määrittelyvaiheen luokkakaavio")
