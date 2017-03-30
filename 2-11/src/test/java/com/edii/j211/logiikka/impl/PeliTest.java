@@ -103,7 +103,7 @@ public class PeliTest {
         for (int koko = 2; koko <= 10; koko++) {
             PeliImpl peli = new PeliImpl(koko);
             for (int i = 0; i < koko * koko - 1; i++) {
-                assertEquals("Tyhjien määrä ei täsmää, kun " + koko + " kokoiseen kenttään lisättiin " + (i + 1) + ". luku", koko * koko - 1 - i, peli.pelikentta().tyhjat().length);
+                assertEquals("Tyhjien määrä ei täsmää, kun " + koko + " kokoiseen kenttään lisättiin " + (i + 1) + ". luku", koko * koko - 1 - i, Util.tyhjat(peli.pelikentta()).length);
                 peli.lisaaLuku();
             }
         }
