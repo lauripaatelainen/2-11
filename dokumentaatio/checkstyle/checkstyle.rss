@@ -25,7 +25,7 @@ under the License.
     <language>en-us</language>
     <copyright>&#169;2017</copyright>
     <item>
-      <title>File: 8,
+      <title>File: 10,
              Errors: 0,
              Warnings: 0,
              Infos: 0
@@ -88,6 +88,20 @@ under the License.
               </tr>
                           <tr>
                 <td>
+                  <a href="${project.url}/checkstyle.html#com.edii.j211.logiikka.impl.KierrettyPelikentta.java">com/edii/j211/logiikka/impl/KierrettyPelikentta.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
                   <a href="${project.url}/checkstyle.html#com.edii.j211.textui.Tekstikayttoliittyma.java">com/edii/j211/textui/Tekstikayttoliittyma.java</a>
                 </td>
                 <td>
@@ -131,6 +145,20 @@ under the License.
                           <tr>
                 <td>
                   <a href="${project.url}/checkstyle.html#com.edii.j211.logiikka.Pelikentta.java">com/edii/j211/logiikka/Pelikentta.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#com.edii.j211.logiikka.impl.Util.java">com/edii/j211/logiikka/impl/Util.java</a>
                 </td>
                 <td>
                   0
