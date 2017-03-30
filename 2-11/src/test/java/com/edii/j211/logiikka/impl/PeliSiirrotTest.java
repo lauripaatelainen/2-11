@@ -266,7 +266,7 @@ public class PeliSiirrotTest {
     
     @Test
     public void pelikenttaPysyySamanaYlos() {
-        int pisteet = peli.getPisteet();
+        int pisteet = peli.pisteet();
         
         kentta.asetaArvo(0, 0, 2);
         kentta.asetaArvo(1, 0, 2);
@@ -276,12 +276,12 @@ public class PeliSiirrotTest {
         peli.ylos();
         
         assertEquals("Tyhjien ruutujen määrä ei täsmää", 12, Util.tyhjat(kentta).length);
-        assertEquals("Pelin pistemäärä ei täsmää", pisteet, peli.getPisteet());
+        assertEquals("Pelin pistemäärä ei täsmää", pisteet, peli.pisteet());
     }
     
     @Test
     public void pelikenttaPysyySamanaAlas() {
-        int pisteet = peli.getPisteet();
+        int pisteet = peli.pisteet();
         
         kentta.asetaArvo(0, 3, 2);
         kentta.asetaArvo(1, 3, 2);
@@ -291,14 +291,14 @@ public class PeliSiirrotTest {
         peli.alas();
         
         assertEquals("Tyhjien ruutujen määrä ei täsmää", 12, Util.tyhjat(kentta).length);
-        assertEquals("Pelin pistemäärä ei täsmää", pisteet, peli.getPisteet());
+        assertEquals("Pelin pistemäärä ei täsmää", pisteet, peli.pisteet());
     }
     
     
     
     @Test
     public void pelikenttaPysyySamanaVasemmalle() {
-        int pisteet = peli.getPisteet();
+        int pisteet = peli.pisteet();
         
         kentta.asetaArvo(0, 0, 2);
         kentta.asetaArvo(0, 1, 2);
@@ -308,13 +308,13 @@ public class PeliSiirrotTest {
         peli.vasen();
         
         assertEquals("Tyhjien ruutujen määrä ei täsmää", 12, Util.tyhjat(kentta).length);
-        assertEquals("Pelin pistemäärä ei täsmää", pisteet, peli.getPisteet());
+        assertEquals("Pelin pistemäärä ei täsmää", pisteet, peli.pisteet());
     }
     
     
     @Test
     public void pelikenttaPysyySamanaOikealle() {
-        int pisteet = peli.getPisteet();
+        int pisteet = peli.pisteet();
         
         kentta.asetaArvo(3, 0, 2);
         kentta.asetaArvo(3, 1, 2);
@@ -324,12 +324,12 @@ public class PeliSiirrotTest {
         peli.oikea();
         
         assertEquals("Tyhjien ruutujen määrä ei täsmää", 12, Util.tyhjat(kentta).length);
-        assertEquals("Pelin pistemäärä ei täsmää", pisteet, peli.getPisteet());
+        assertEquals("Pelin pistemäärä ei täsmää", pisteet, peli.pisteet());
     }
     
     @Test
     public void pisteetKasvaaYlos() {
-        int pisteet = peli.getPisteet();
+        int pisteet = peli.pisteet();
         
         Util.tyhjenna(kentta);
         
@@ -351,12 +351,12 @@ public class PeliSiirrotTest {
         peli.ylos();
         peli.ylos();
         
-        assertTrue("Pistemäärä ei täsmää", peli.getPisteet() >= pisteet + 68 && peli.getPisteet() <= pisteet + 76);
+        assertTrue("Pistemäärä ei täsmää", peli.pisteet() >= pisteet + 68 && peli.pisteet() <= pisteet + 76);
     }
     
     @Test
     public void pisteetKasvaaAlas() {
-        int pisteet = peli.getPisteet();
+        int pisteet = peli.pisteet();
         
         Util.tyhjenna(kentta);
         
@@ -378,12 +378,12 @@ public class PeliSiirrotTest {
         peli.alas();
         peli.alas();
         
-        assertTrue("Pistemäärä ei täsmää", peli.getPisteet() >= pisteet + 68 && peli.getPisteet() <= pisteet + 76);
+        assertTrue("Pistemäärä ei täsmää", peli.pisteet() >= pisteet + 68 && peli.pisteet() <= pisteet + 76);
     }
     
     @Test
     public void pisteetKasvaaVasemmalle() {
-        int pisteet = peli.getPisteet();
+        int pisteet = peli.pisteet();
         
         Util.tyhjenna(kentta);
         
@@ -405,12 +405,12 @@ public class PeliSiirrotTest {
         peli.vasen();
         peli.vasen();
         
-        assertTrue("Pistemäärä ei täsmää", peli.getPisteet() >= pisteet + 68 && peli.getPisteet() <= pisteet + 76);
+        assertTrue("Pistemäärä ei täsmää", peli.pisteet() >= pisteet + 68 && peli.pisteet() <= pisteet + 76);
     }
     
     @Test
     public void pisteetKasvaaOikealle() {
-        int pisteet = peli.getPisteet();
+        int pisteet = peli.pisteet();
         
         Util.tyhjenna(kentta);
         
@@ -432,6 +432,6 @@ public class PeliSiirrotTest {
         peli.oikea();
         peli.oikea();
         
-        assertTrue("Pistemäärä ei täsmää", peli.getPisteet() >= pisteet + 68 && peli.getPisteet() <= pisteet + 76);
+        assertTrue("Pistemäärä ei täsmää", peli.pisteet() >= pisteet + 68 && peli.pisteet() <= pisteet + 76);
     }
 }

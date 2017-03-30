@@ -17,4 +17,6 @@ public interface Peli {
     public void alas();
     public void oikea();
     public void vasen();
+    
+    public int pisteet();
 }

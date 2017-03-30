@@ -105,10 +105,15 @@ public class Tekstikayttoliittyma {
         
         while (true) {
             tulostaKentta(kentta);
-            String valinta = lueValinta("Valinta", new String[] {"alas", "ylös", "vasen", "oikea", "lopeta"});
+            
+            out.println();
+            out.println("Pisteet: " + Integer.toString(peli.pisteet()));
+            out.println();
+            
+            String valinta = lueValinta("Valinta", new String[] {"alas", "ylos", "vasen", "oikea", "lopeta"});
             if (valinta.equals("lopeta")) {
                 break;
-            } else if (valinta.equals("ylös")) {
+            } else if (valinta.equals("ylos")) {
                 peli.ylos();
             } else if (valinta.equals("alas")) {
                 peli.alas();

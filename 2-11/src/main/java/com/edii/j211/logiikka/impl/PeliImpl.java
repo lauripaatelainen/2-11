@@ -35,7 +35,8 @@ public class PeliImpl implements Peli {
         lisaaLuku();
     }
     
-    public int getPisteet() {
+    @Override
+    public int pisteet() {
         return pisteet;
     }
 
@@ -79,7 +80,7 @@ public class PeliImpl implements Peli {
             lisaaLuku();
         }
         
-        setPisteet(getPisteet() + pisteet);
+        setPisteet(pisteet() + pisteet);
     }
 
     /**
@@ -98,7 +99,7 @@ public class PeliImpl implements Peli {
             lisaaLuku();
         }
         
-        setPisteet(getPisteet() + pisteet);
+        setPisteet(pisteet() + pisteet);
     }
 
     /**
@@ -117,7 +118,7 @@ public class PeliImpl implements Peli {
             lisaaLuku();
         }
         
-        setPisteet(getPisteet() + pisteet);
+        setPisteet(pisteet() + pisteet);
     }
 
     /**
@@ -136,7 +137,7 @@ public class PeliImpl implements Peli {
             lisaaLuku();
         }
         
-        setPisteet(getPisteet() + pisteet);
+        setPisteet(pisteet() + pisteet);
     }
 
     /**
