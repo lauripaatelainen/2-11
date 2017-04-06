@@ -10,6 +10,6 @@ Klooni suositusta 2048-pelistä java-työpöytäpelinä. Pelissä siirretään n
 
 ## Testiraportit
 
-[Pit-raportti](https://htmlpreview.github.io/?https://github.com/lauripaatelainen/2-11/blob/master/dokumentaatio/pit/201703302120/index.html)
+[Pit-raportti](https://htmlpreview.github.io/?https://github.com/lauripaatelainen/2-11/blob/master/dokumentaatio/pit/201704062258/index.html)
 
 [Checkstyle-raportti](https://htmlpreview.github.io/?https://github.com/lauripaatelainen/2-11/blob/master/dokumentaatio/checkstyle/checkstyle.html)
