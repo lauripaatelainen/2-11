@@ -35,10 +35,10 @@
                 <artifactId>pitest-maven</artifactId>
                 <version>1.1.8</version>
                 <configuration>
-                    <excludedClasses>
-                        <param>com.edii.j211.Main</param>
-                        <param>com.edii.j211.textui.Tekstikayttoliittyma</param>
-                    </excludedClasses>
+                    <targetClasses>
+                        <param>com.edii.j211.logiikka.*</param>
+                        <param>com.edii.j211.logiikka.impl.*</param>
+                    </targetClasses>
                 </configuration>
             </plugin>
             <plugin>
