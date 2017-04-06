@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.edii.j211.logiikka.impl;
 
 import com.edii.j211.logiikka.MuokattavaPelikentta;
@@ -11,8 +6,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- *
- * @author edii
+ * Staattinen apuluokka pelikenttää koskevia operaatioita varten.
+ * 
+ * Luokan metodit eivät ole riippuvaisi tietyistä toteutuksista, vaan
+ * parametrina annetaan rajapintaoliot. 
  */
 public final class Util {    
     public static void tyhjenna(MuokattavaPelikentta kentta) {

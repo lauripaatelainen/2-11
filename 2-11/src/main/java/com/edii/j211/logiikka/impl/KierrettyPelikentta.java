@@ -1,8 +1,6 @@
 package com.edii.j211.logiikka.impl;
 
 import com.edii.j211.logiikka.MuokattavaPelikentta;
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Käytettään Siirtäjän sisällä yksinkertaistamaan eri siirto-operaatioita.
@@ -12,8 +10,6 @@ import java.util.List;
  * myös alkuperäiseen pelikenttään. Esim. jos 4 kokoisen kierretyn pelikentän
  * vasemman ylänurkan arvoa muutetaan, muuttaa se alkuperäisessä pelikentässä 
  * oikean ylänurkan arvoa. 
- * 
- * @author edii
  */
 public class KierrettyPelikentta implements MuokattavaPelikentta {
     private MuokattavaPelikentta kentta;

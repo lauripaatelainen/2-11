@@ -4,11 +4,9 @@ import com.edii.j211.textui.Tekstikayttoliittyma;
 import java.util.Scanner;
 
 /**
- * Pääluokka pelin käynnistykseen. Kehitysvaiheessa käynnistää
- * testikäyttöön tarkoitetun tekstikäyttöliittymän, myöhemmin
- * graafisen käyttöliittymän. 
+ * Pääluokka pelin käynnistykseen. Käynnistää tekstikäyttöliittymän. 
  * 
- * @author edii
+ * @see com.edii.j211.gui.GraafinenKayttoliittyma
  */
 public class Main {
     public static void main(String[] args) {

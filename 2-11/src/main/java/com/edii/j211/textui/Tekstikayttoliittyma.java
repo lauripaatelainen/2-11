@@ -9,8 +9,6 @@ import java.util.Scanner;
 /**
  * Tekstikäyttöliittymä pelin logiikan testaamista varten. Peliä voi pelata
  * komennoilla alas / ylös / vasemmalle / oikealle, vaikkei se kovin nopeaa ole.
- * 
- * @author edii
  */
 public class Tekstikayttoliittyma {
     private Scanner in;

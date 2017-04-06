@@ -3,8 +3,10 @@ package com.edii.j211.logiikka.impl;
 import com.edii.j211.logiikka.MuokattavaPelikentta;
 
 /**
- *
- * @author edii
+ * Luokka, joka vastaa pelikentän lukujen siirto- ja yhdistysoperaatioista.
+ * 
+ * Tarjoaa jokaiseen suuntaan metodi siirroille ja vierekkäisten samojen lukujen
+ * yhdistämiselle. 
  */
 public class Siirtaja {
     private MuokattavaPelikentta kentta;

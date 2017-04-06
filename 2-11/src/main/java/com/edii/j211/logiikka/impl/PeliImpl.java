@@ -5,9 +5,9 @@ import com.edii.j211.logiikka.Pelikentta;
 import java.util.Random;
 
 /**
- * Ylläpitää pelin tilannetta.
- *
- * @author edii
+ * Peli-rajapinnan toteutus.
+ * 
+ * @see com.edii.j211.logiikka.Peli
  */
 public class PeliImpl implements Peli {
 
