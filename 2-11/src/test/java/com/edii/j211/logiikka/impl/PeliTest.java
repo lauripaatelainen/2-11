@@ -5,6 +5,7 @@
  */
 package com.edii.j211.logiikka.impl;
 
+import com.edii.j211.logiikka.MuokattavaPelikentta;
 import com.edii.j211.logiikka.Peli;
 import com.edii.j211.logiikka.Pelikentta;
 import org.junit.After;
@@ -129,5 +130,34 @@ public class PeliTest {
         assertEquals(x1y0, kentta.arvo(1, 0));
         assertEquals(x0y1, kentta.arvo(0, 1));
         assertEquals(x1y1, kentta.arvo(1, 1));
+    }
+    
+    @Test
+    public void peliOhi() {
+        PeliImpl peli = new PeliImpl(2);
+        MuokattavaPelikentta kentta = (MuokattavaPelikentta) peli.pelikentta();
+        
+        assertTrue("peliOhi() palautti alkutilassa true", peli.peliOhi() == false);
+        
+        kentta.asetaArvo(0, 0, 2);
+        kentta.asetaArvo(0, 1, 4);
+        kentta.asetaArvo(1, 0, 4);
+        kentta.asetaArvo(1, 1, 2);
+        
+        assertTrue("peliOhi() palautti false, vaikka siirtoja ei voi tehdä", peli.peliOhi() == true);
+        
+        kentta.asetaArvo(0, 0, 2);
+        kentta.asetaArvo(0, 1, 2);
+        kentta.asetaArvo(1, 0, 4);
+        kentta.asetaArvo(1, 1, 8);
+        
+        assertTrue("peliOhi() palautti true täydellä kentällä, vaikka siirron alas tai ylös voi tehdä", peli.peliOhi() == false);
+        
+        kentta.asetaArvo(0, 0, 2);
+        kentta.asetaArvo(0, 1, 4);
+        kentta.asetaArvo(1, 0, 2);
+        kentta.asetaArvo(1, 1, 8);
+        
+        assertTrue("peliOhi() palautti true täydellä kentällä, vaikka siirron vasemmalle tai oikealle voi tehdä", peli.peliOhi() == false);
     }
 }

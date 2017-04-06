@@ -106,6 +106,12 @@ public class Tekstikayttoliittyma {
         while (true) {
             tulostaKentta(kentta);
             
+            if (peli.peliOhi()) {
+                out.println("PELI OHI!");
+                out.println("Sait " + Integer.toString(peli.pisteet()) + " pistettä");
+                break;
+            }
+            
             out.println();
             out.println("Pisteet: " + Integer.toString(peli.pisteet()));
             out.println();

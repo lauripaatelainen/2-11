@@ -160,4 +160,25 @@ public class PeliImpl implements Peli {
             kentta.asetaArvo(valinta[0], valinta[1], uusiLuku);
         }
     }
+    
+    @Override
+    public boolean peliOhi() {
+        if (Util.tyhjat(kentta).length > 0) {
+            return false;
+        }
+        
+        for (int y = 0; y < koko(); y++) {
+            for (int x = 0; x < koko(); x++) {
+                if (x != koko() - 1 && kentta.arvo(x, y) == kentta.arvo(x + 1, y)) {
+                    return false;
+                }
+                
+                if (y != koko() - 1 && kentta.arvo(x, y) == kentta.arvo(x, y + 1)) {
+                    return false;
+                }
+            }
+        }
+        
+        return true;
+    }
 }
