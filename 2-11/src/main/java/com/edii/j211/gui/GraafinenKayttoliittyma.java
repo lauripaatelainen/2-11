@@ -35,6 +35,7 @@ import static javax.swing.SwingConstants.CENTER;
 public class GraafinenKayttoliittyma extends JFrame {
 
     private Peli peli;
+    private boolean peliOhi;
 
     private JButton uusiPeliNappi;
     private JLabel infoTeksti;
@@ -83,6 +84,11 @@ public class GraafinenKayttoliittyma extends JFrame {
                     peli.oikea();
                 } else {
                     return false;
+                }
+                
+                if (!peliOhi && peli.peliOhi()) {
+                    peliOhi = true;
+                    JOptionPane.showMessageDialog(GraafinenKayttoliittyma.this, "Peli ohi! Sait " + peli.pisteet() + " pistettä.");
                 }
                 
                 paivitaKentta();
@@ -170,7 +176,9 @@ public class GraafinenKayttoliittyma extends JFrame {
 
     public void uusiPeli(int koko) {
         peli = new PeliImpl(koko);
+        peliOhi = false;
         luoPelialue();
+        paivitaPisteet();
     }
 
     private void luoPelialue() {
@@ -197,7 +205,11 @@ public class GraafinenKayttoliittyma extends JFrame {
     }
     
     private void paivitaPisteet() {
-        infoTeksti.setText("Pisteet: " + peli.pisteet());
+        if (peliOhi) {
+            infoTeksti.setText("Peli ohi! Pisteet: " + peli.pisteet());
+        } else {
+            infoTeksti.setText("Pisteet: " + peli.pisteet());
+        }
     }
 
     private void paivitaKentta() {
