@@ -78,9 +78,8 @@ public class PeliImpl implements Peli {
 
         if (siirretty || pisteet > 0) {
             lisaaLuku();
+            setPisteet(pisteet() + pisteet);
         }
-        
-        setPisteet(pisteet() + pisteet);
     }
 
     /**
@@ -97,9 +96,9 @@ public class PeliImpl implements Peli {
 
         if (siirretty || pisteet > 0) {
             lisaaLuku();
+            setPisteet(pisteet() + pisteet);
         }
         
-        setPisteet(pisteet() + pisteet);
     }
 
     /**
@@ -116,9 +115,8 @@ public class PeliImpl implements Peli {
 
         if (siirretty || pisteet > 0) {
             lisaaLuku();
+            setPisteet(pisteet() + pisteet);
         }
-        
-        setPisteet(pisteet() + pisteet);
     }
 
     /**
@@ -135,9 +133,9 @@ public class PeliImpl implements Peli {
 
         if (siirretty || pisteet > 0) {
             lisaaLuku();
+            setPisteet(pisteet() + pisteet);
         }
         
-        setPisteet(pisteet() + pisteet);
     }
 
     /**
