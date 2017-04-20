@@ -30,6 +30,11 @@ public class PeliTest {
     @After
     public void tearDown() {
     }
+    
+    @Test
+    public void dummyTest() {
+        new Util(); /* ilman tätä testiä Util-luokan ensimmäistä riviä ei lasketa pit:n line coverageen */
+    }
 
     @Test
     public void testaaLiianPieniKentanKoko() {

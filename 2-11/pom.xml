@@ -38,6 +38,7 @@
                     <targetClasses>
                         <param>com.edii.j211.logiikka.*</param>
                         <param>com.edii.j211.logiikka.impl.*</param>
+                        <param>com.edii.j211.pisterekisteri.*</param>
                     </targetClasses>
                 </configuration>
             </plugin>
