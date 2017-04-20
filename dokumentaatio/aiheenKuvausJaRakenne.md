@@ -14,4 +14,12 @@ Peliä käyttää vain yksi pelaaja kerrallaan, ja ainoa toiminto jonka pelaaja 
 
 ## Ohjelman rakenne
 
+### Luokkakaavio
+(Käyttöliittymän ja pisterekisterin välinen yhteys on vielä toteuttamatta)
+
 ![Määrittelyvaiheen luokkakaavio](211-luokkakaavio.png "Määrittelyvaiheen luokkakaavio")
+
+### Sekvenssikaaviot
+Pelin luonteesta johtuen erilaisia käyttötapauksia ei ole montaa. Alla olevissa kaavioissa on kuvattu yhden pelin kulku alusta loppuun, ja tarkemmalla tasolla mitä siirron aikana tapahtuu.
+![Sekvenssikaavio pelin kulku](211-sekvenssi-peli.png "Sekvenssikaavio pelin kulku")
+![Sekvenssikaavio siirto](211-sekvenssi-siirto.png "Sekvenssikaavio siirto")
