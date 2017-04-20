@@ -7,11 +7,14 @@ import java.awt.Color;
 import java.awt.Dialog;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
+import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.KeyEventDispatcher;
 import java.awt.KeyboardFocusManager;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.ComponentAdapter;
+import java.awt.event.ComponentEvent;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.awt.event.WindowAdapter;
@@ -83,12 +86,19 @@ public class GraafinenKayttoliittyma extends JFrame {
                 }
                 
                 paivitaKentta();
+                paivitaPisteet();
                 return true;
             }
         });
         addKeyListener(new KeyAdapter() {
             @Override
             public void keyPressed(KeyEvent e) {
+            }
+        });
+        addComponentListener(new ComponentAdapter() {
+            @Override
+            public void componentResized(ComponentEvent e) {
+                paivitaKentta();
             }
         });
     }
@@ -180,8 +190,14 @@ public class GraafinenKayttoliittyma extends JFrame {
                 ruudut[y][x].setOpaque(true);
             }
         }
-
+        
         paivitaKentta();
+        invalidate();
+        paivitaKentta();
+    }
+    
+    private void paivitaPisteet() {
+        infoTeksti.setText("Pisteet: " + peli.pisteet());
     }
 
     private void paivitaKentta() {
@@ -192,6 +208,11 @@ public class GraafinenKayttoliittyma extends JFrame {
                 int arvo = kentta.arvo(x, y);
                 Color fg;
                 Color bg;
+                
+                int height = ruudut[y][x].getHeight();
+                System.out.println("" + height);
+                ruudut[y][x].setFont(new Font("Arial", Font.BOLD, height / 3));
+                
                 if (arvo == 0) {
                     ruudut[y][x].setText("");
                     fg = Color.white;
@@ -211,8 +232,40 @@ public class GraafinenKayttoliittyma extends JFrame {
                             fg = new Color(0xf9f6f2);
                             bg = new Color(0xf2b179);
                             break;
+                        case 16:
+                            fg = new Color(0xf9f6f2);
+                            bg = new Color(0xf59563);
+                            break;
+                        case 32:
+                            fg = new Color(0xf9f6f2);
+                            bg = new Color(0xf67c5f);
+                            break;
+                        case 64:
+                            fg = new Color(0xf9f6f2);
+                            bg = new Color(0xf65e3b);
+                            break;
+                        case 128:
+                            fg = new Color(0xf9f6f2);
+                            bg = new Color(0xedcf72);
+                            break;
+                        case 256:
+                            fg = new Color(0xf9f6f2);
+                            bg = new Color(0xedcc61);
+                            break;
+                        case 512:
+                            fg = new Color(0xf9f6f2);
+                            bg = new Color(0xedc850);
+                            break;
+                        case 1024:
+                            fg = new Color(0xf9f6f2);
+                            bg = new Color(0xedc53f);
+                            break;
+                        case 2048:
+                            fg = new Color(0xf9f6f2);
+                            bg = new Color(0xedc22e);
+                            break;
                         default:
-                            fg = Color.white;
+                            fg = new Color(0xf9f6f2);
                             bg = Color.black;
                     }
                 }
