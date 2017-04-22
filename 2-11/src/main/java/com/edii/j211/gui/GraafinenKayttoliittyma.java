@@ -31,6 +31,7 @@ public class GraafinenKayttoliittyma extends JFrame {
     private boolean peliOhi;
 
     private JButton uusiPeliNappi;
+    private JButton tuloksetNappi;
     private JLabel infoTeksti;
     private Pelialue pelialue;
     
@@ -54,12 +55,15 @@ public class GraafinenKayttoliittyma extends JFrame {
 
         uusiPeliNappi = new JButton("Uusi peli");
         uusiPeliNappi.setAlignmentX(CENTER_ALIGNMENT);
+        tuloksetNappi = new JButton("Tulokset");
+        tuloksetNappi.setAlignmentX(CENTER_ALIGNMENT);
         infoTeksti = new JLabel("Aloita peli painamalla nappia");
         infoTeksti.setAlignmentX(CENTER_ALIGNMENT);
 
         pelialue = null;
 
         add(uusiPeliNappi);
+        add(tuloksetNappi);
         add(infoTeksti);
         setSize(new Dimension(800, 800));
         setTitle("2^11");
@@ -106,6 +110,14 @@ public class GraafinenKayttoliittyma extends JFrame {
                 if (tulos >= 2) {
                     uusiPeli(tulos);
                 }
+            }
+        });
+        
+        tuloksetNappi.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                TuloksetDialogi dialogi = new TuloksetDialogi(GraafinenKayttoliittyma.this, pisteRekisteri);
+                dialogi.nayta();
             }
         });
     }
