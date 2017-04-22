@@ -159,4 +159,15 @@ public final class PisteRekisteriIOTest {
             assertTrue(true);
         }
     }
+    
+    @Test
+    public void tyhjanTiedostonLuku() {
+        try {
+            new File(tempFilename).delete();
+            PisteRekisteriIO.avaa(tempFilename);
+            PisteRekisteriIO.avaa(tempFilename);
+        } catch (IOException e) {
+            throw new AssertionError("Tyhjän tiedoston luku ei onnistunut");
+        }
+    }
 }

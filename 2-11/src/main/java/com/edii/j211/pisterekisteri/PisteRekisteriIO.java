@@ -35,13 +35,16 @@ public class PisteRekisteriIO {
         } else {
             try {
                 Scanner lukija = new Scanner(tiedosto);
+                PisteRekisteri rekisteri = new PisteRekisteri();
+                if (!lukija.hasNextLine()) {
+                    return rekisteri;
+                }
 
                 String rivi = lukija.nextLine().trim();
                 if (rivi.charAt(0) != '#') {
                     throw new IOException("Tiedosto ei sisällä kelvollista pisterekisteriä");
                 }
                 int koko = Integer.parseInt(rivi.substring(1));
-                PisteRekisteri rekisteri = new PisteRekisteri();
 
                 while (lukija.hasNextLine()) {
                     rivi = lukija.nextLine().trim();
