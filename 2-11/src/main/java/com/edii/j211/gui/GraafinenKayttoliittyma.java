@@ -144,23 +144,12 @@ public class GraafinenKayttoliittyma extends JFrame {
         if (!peliOhi && peli != null && peli.peliOhi()) {
             peliOhi = true;
             List<Tulos> tulokset = pisteRekisteri.pistetaulu(peli.koko());
-            int sijoitus = -1;
             
-            if (tulokset == null || tulokset.isEmpty()) {
-                sijoitus = 1;
-            } else if (tulokset.size() >= 10 && tulokset.get(tulokset.size() - 1).getPisteet() >= peli.pisteet()) {
+            int sijoitus = pisteRekisteri.sijoitus(peli.koko(), peli.pisteet());
+            
+            if (sijoitus == -1) {
                 JOptionPane.showMessageDialog(this, "Peli ohi! Sait " + peli.pisteet() + " pistettä. Et sijoittunut top-listalle. ");
             } else {
-                sijoitus = tulokset.size();
-                for (int i = 0; i < tulokset.size(); i++) {
-                    if (tulokset.get(i).getPisteet() < peli.pisteet()) {
-                        sijoitus = i + 1;
-                        break;
-                    }
-                }
-            }
-            
-            if (sijoitus != -1) {
                 String nimi = JOptionPane.showInputDialog(GraafinenKayttoliittyma.this, "Peli ohi! Sait " + peli.pisteet() + " pistettä ja sijoituit sijalle " + sijoitus + ". Anna nimi top-listaa varten.");
                 Tulos tulos = new Tulos(nimi, peli.pisteet(), peli.koko());
                 pisteRekisteri.lisaaTulos(tulos);

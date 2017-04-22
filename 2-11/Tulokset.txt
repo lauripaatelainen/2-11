@@ -6,3 +6,4 @@ asd	24
 lauri	16
 #3
 Lauri	208
+lauri	168

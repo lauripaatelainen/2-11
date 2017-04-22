@@ -165,7 +165,7 @@ public final class PisteRekisteriIOTest {
         try {
             new File(tempFilename).delete();
             PisteRekisteriIO.avaa(tempFilename);
-            PisteRekisteriIO.avaa(tempFilename);
+            assertEquals(0, PisteRekisteriIO.avaa(tempFilename).pistetaulut().size());
         } catch (IOException e) {
             throw new AssertionError("Tyhjän tiedoston luku ei onnistunut");
         }

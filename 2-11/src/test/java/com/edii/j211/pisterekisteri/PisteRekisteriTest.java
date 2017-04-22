@@ -103,4 +103,81 @@ public class PisteRekisteriTest {
         assertNotEquals(tulos, tulos3);
         assertNotEquals(tulos, tulos4);
     }
+    
+    @Test
+    public void sijoitusTyhjassaPistetaulussa() {
+        assertEquals("Tyhjään pistetauluun sijoitus ei ollut 1", 1, rekisteri.sijoitus(2, 1));
+    }
+    
+    @Test
+    public void sijoitusViimeinenSija() {
+        rekisteri.lisaaTulos(new Tulos("a", 4, 2));
+        rekisteri.lisaaTulos(new Tulos("a", 4, 2));
+        rekisteri.lisaaTulos(new Tulos("a", 4, 2));
+        rekisteri.lisaaTulos(new Tulos("a", 4, 2));
+        assertEquals("Viimeisen sijan laskeminen ei onnistunut", 5, rekisteri.sijoitus(2, 1));
+    }
+    
+    @Test
+    public void sijoitusEnsimmainenSija() {
+        rekisteri.lisaaTulos(new Tulos("a", 4, 2));
+        rekisteri.lisaaTulos(new Tulos("a", 4, 2));
+        rekisteri.lisaaTulos(new Tulos("a", 4, 2));
+        rekisteri.lisaaTulos(new Tulos("a", 4, 2));
+        assertEquals("Ensimmäisen sijan laskeminen ei onnistunut", 1, rekisteri.sijoitus(2, 8));
+    }
+    
+    @Test
+    public void sijoitusKeskelle() {
+        rekisteri.lisaaTulos(new Tulos("a", 2, 2));
+        rekisteri.lisaaTulos(new Tulos("a", 4, 2));
+        rekisteri.lisaaTulos(new Tulos("a", 6, 2));
+        rekisteri.lisaaTulos(new Tulos("a", 8, 2));
+        assertEquals("Keskelle osuvan sijoituksen laskeminen ei onnistunut", 3, rekisteri.sijoitus(2, 5));
+    }
+    
+    @Test
+    public void sijoitusEiToplistalle() {
+        rekisteri.lisaaTulos(new Tulos("a", 10, 2));
+        rekisteri.lisaaTulos(new Tulos("a", 12, 2));
+        rekisteri.lisaaTulos(new Tulos("a", 14, 2));
+        rekisteri.lisaaTulos(new Tulos("a", 16, 2));
+        rekisteri.lisaaTulos(new Tulos("a", 18, 2));
+        rekisteri.lisaaTulos(new Tulos("a", 10, 2));
+        rekisteri.lisaaTulos(new Tulos("a", 12, 2));
+        rekisteri.lisaaTulos(new Tulos("a", 14, 2));
+        rekisteri.lisaaTulos(new Tulos("a", 16, 2));
+        rekisteri.lisaaTulos(new Tulos("a", 18, 2));
+        assertEquals("Top-listalle riittämättömän sijoituksen laskeminen ei onnistunut", -1, rekisteri.sijoitus(2, 10));
+    }
+    
+    @Test
+    public void tayteenTopListaanViimeinenSija() {
+        rekisteri.lisaaTulos(new Tulos("a", 10, 2));
+        rekisteri.lisaaTulos(new Tulos("a", 12, 2));
+        rekisteri.lisaaTulos(new Tulos("a", 14, 2));
+        rekisteri.lisaaTulos(new Tulos("a", 16, 2));
+        rekisteri.lisaaTulos(new Tulos("a", 18, 2));
+        rekisteri.lisaaTulos(new Tulos("a", 11, 2));
+        rekisteri.lisaaTulos(new Tulos("a", 12, 2));
+        rekisteri.lisaaTulos(new Tulos("a", 14, 2));
+        rekisteri.lisaaTulos(new Tulos("a", 16, 2));
+        rekisteri.lisaaTulos(new Tulos("a", 18, 2));
+        assertEquals("Täyteen top-listaan viimeisen sijan laskeminen ei onnistunut", 10, rekisteri.sijoitus(2, 11));
+    }
+    
+    @Test
+    public void sijoitusSamoillaPisteilla() {
+        rekisteri.lisaaTulos(new Tulos("a", 10, 2));
+        rekisteri.lisaaTulos(new Tulos("a", 12, 2));
+        rekisteri.lisaaTulos(new Tulos("a", 14, 2));
+        rekisteri.lisaaTulos(new Tulos("a", 16, 2));
+        rekisteri.lisaaTulos(new Tulos("a", 18, 2));
+        rekisteri.lisaaTulos(new Tulos("a", 10, 2));
+        rekisteri.lisaaTulos(new Tulos("a", 12, 2));
+        rekisteri.lisaaTulos(new Tulos("a", 14, 2));
+        rekisteri.lisaaTulos(new Tulos("a", 16, 2));
+        rekisteri.lisaaTulos(new Tulos("a", 18, 2));
+        assertEquals("Samalla pistemäärällä saadun sijoituksen laskeminen ei onnistunut", 5, rekisteri.sijoitus(2, 16));
+    }
 }
