@@ -8,3 +8,4 @@ Päivä | Tunnit | Kuvaus
 6.4.  | 4.0h   | Graafisen käyttöliittymän ensimmäinen versio. Logiikkaan lisäys pelin loppumisesta. Javadocin lisäystä / parannusta. Koodin siistimistä. 
 20.4. | 5.0h   | Graafisen käyttöliittymän parantelua ja koodin järjestämistä paremmin. Logiikkapuolen toteutus pisterekisteristä, joka tallentaa tiedostoon top10-listat eri kokoisten kenttien parhaista pistemääristä. Viimeiselle viikolle jää viimeisten javadoccien päivitys ja käyttöliittymän kytkeminen pisterekisteriin. 
 22.4. | 2.0h   | Tulosten käsittely graafisessa käyttöliittymässä
+27.4. | 1.0h   | Javadocien ja muun dokumentaation viimeistely
