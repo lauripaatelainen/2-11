@@ -11,26 +11,29 @@ import java.util.Scanner;
  * komennoilla alas / ylös / vasemmalle / oikealle, vaikkei se kovin nopeaa ole.
  */
 public class Tekstikayttoliittyma {
+
     private Scanner in;
     private PrintStream out;
-    
+
     /**
-     * Luo uuden Tekstikäyttöliittymän. 
-     * 
-     * @param in Scanner-olio käyttäjän syötettä varten (yleensä new Scanner(System.in))
-     * @param out PrintStream-olio käyttäjälle näytettävää tekstiä varten (yleensä System.out)
+     * Luo uuden Tekstikäyttöliittymän.
+     *
+     * @param in Scanner-olio käyttäjän syötettä varten (yleensä new
+     * Scanner(System.in))
+     * @param out PrintStream-olio käyttäjälle näytettävää tekstiä varten
+     * (yleensä System.out)
      */
     public Tekstikayttoliittyma(Scanner in, PrintStream out) {
         this.in = in;
         this.out = out;
     }
-    
+
     /**
      * Lukee käyttäjältä kokonaisluvun. Lukee lukua niin pitkään, kunnes
-     * kelvollinen luku on annettu. Ei heitä virheitä. 
-     * 
+     * kelvollinen luku on annettu. Ei heitä virheitä.
+     *
      * Sisäinen metodi tekstikäyttöliitymän toteutusta varten.
-     * 
+     *
      * @param kehote Käyttäjälle näytettävä kehote
      * @return Luettu kokonaisluku
      */
@@ -41,19 +44,21 @@ public class Tekstikayttoliittyma {
             try {
                 return Integer.parseInt(rivi);
             } catch (NumberFormatException e) {
-            /* suorita luuppi uudestaan */
+                /* suorita luuppi uudestaan */
             }
         }
     }
-    
+
     /**
-     * Lukee käyttäjältä valinnan annetuista vaihtoehdoista. 
-     * 
-     * Lukee niin pitkään, kunnes kelvollinen luku on annettu. Ei heitä virheitä. 
-     * 
+     * Lukee käyttäjältä valinnan annetuista vaihtoehdoista.
+     *
+     * Lukee niin pitkään, kunnes kelvollinen syöte on annettu. Ei heitä
+     * virheitä.
+     *
      * Sisäinen metodi tekstikäyttöliitymän toteutusta varten.
-     * 
+     *
      * @param kehote Käyttäjälle näytettävä kehote
+     * @param vaihtoehdot Vaihtoehdot, joista käyttäjän on valittava
      * @return Luettu valinta
      */
     public String lueValinta(String kehote, String[] vaihtoehdot) {
@@ -71,14 +76,14 @@ public class Tekstikayttoliittyma {
                     }
                 }
             } catch (NumberFormatException e) {
-            /* suorita luuppi uudestaan */
+                /* suorita luuppi uudestaan */
             }
         }
     }
-    
+
     /**
      * Tulostaa parametrina annetun kentän.
-     * 
+     *
      * @param kentta Tulostettava kenttä
      */
     public void tulostaKentta(Pelikentta kentta) {
@@ -90,31 +95,31 @@ public class Tekstikayttoliittyma {
             out.println(rivi);
         }
     }
-    
+
     /**
-     * Käynnistää pelin. Käyttöliittymä pyytää käyttäjältä kentän koon,
-     * jonka jälkeen peli aloitetaan. Metodi lopettaa suorituksen vasta
-     * kun peli päättyy. 
+     * Käynnistää pelin. Käyttöliittymä pyytää käyttäjältä kentän koon, jonka
+     * jälkeen peli aloitetaan. Metodi lopettaa suorituksen vasta kun peli
+     * päättyy.
      */
     public void kaynnista() {
         int kentanKoko = lueKokonaisluku("Anna kentän koko");
         Peli peli = new PeliImpl(kentanKoko);
         Pelikentta kentta = peli.pelikentta();
-        
+
         while (true) {
             tulostaKentta(kentta);
-            
+
             if (peli.peliOhi()) {
                 out.println("PELI OHI!");
                 out.println("Sait " + Integer.toString(peli.pisteet()) + " pistettä");
                 break;
             }
-            
+
             out.println();
             out.println("Pisteet: " + Integer.toString(peli.pisteet()));
             out.println();
-            
-            String valinta = lueValinta("Valinta", new String[] {"alas", "ylos", "vasen", "oikea", "lopeta"});
+
+            String valinta = lueValinta("Valinta", new String[]{"alas", "ylos", "vasen", "oikea", "lopeta"});
             if (valinta.equals("lopeta")) {
                 break;
             } else if (valinta.equals("ylos")) {

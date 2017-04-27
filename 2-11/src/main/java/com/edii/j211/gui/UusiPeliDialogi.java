@@ -16,11 +16,20 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 /**
- *
+ * Dialogi uuden pelin luontiin. Kysyy käyttäjältä vain pelin koon.
  */
 public final class UusiPeliDialogi extends JDialog {
+
+    /**
+     * Käyttäjän syöttämä pelin koko.
+     */
     private int tulos = -1;
 
+    /**
+     * Konstruktori dialogin luontiin.
+     *
+     * @param owner Dialogin omistava käyttöliittymäkomponentti
+     */
     public UusiPeliDialogi(Frame owner) {
         super(owner);
         this.setLayout(new BoxLayout(this.getContentPane(), BoxLayout.Y_AXIS));
@@ -79,7 +88,13 @@ public final class UusiPeliDialogi extends JDialog {
         this.add(nappirivi);
         this.pack();
     }
-    
+
+    /**
+     * Näyttää dialogin ja palautuu vasta kun dialogi suljetaan.
+     *
+     * @return Palauttaa käyttäjän antaman pelikentän koon tai -1 jos ruutu
+     * suljettiin antamatta kelvollista kokoa.
+     */
     public int nayta() {
         setVisible(true);
         return tulos;

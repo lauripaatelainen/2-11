@@ -14,6 +14,11 @@ public class Siirtaja {
     private MuokattavaPelikentta kierto2;
     private MuokattavaPelikentta kierto3;
     
+    /**
+     * Kontruktori uuden siirtäjän luomiseen. Saa parametrinään muokattavan
+     * pelikentän, johon siirto-operaatiot kohdistuu.
+     * @param kentta Pelikenttä, johon siirto-operaatiot kohdistuu.
+     */
     public Siirtaja(MuokattavaPelikentta kentta) {
         this.kentta = kentta;
         this.kierto1 = new KierrettyPelikentta(kentta);

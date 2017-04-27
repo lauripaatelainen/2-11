@@ -2,54 +2,55 @@ package com.edii.j211.logiikka;
 
 /**
  * Rajapinta pelin kokonaistilanteelle.
- * 
- * Peli-rajapinnan toteuttavan luokan olio merkitsee yhtä peliä. 
+ *
+ * Peli-rajapinnan toteuttavan luokan olio merkitsee yhtä peliä.
  */
 public interface Peli {
+
     /**
-     * Pelikentän koko
-     * 
+     * Pelikentän koko.
+     *
      * @return Palauttaa pelin leveyden (ja korkeuden) ruutuina.
      */
     public int koko();
-    
+
     /**
-     * Pelin pelikenttä
-     * 
+     * Pelin pelikenttä.
+     *
      * @return Peliin liittyvän pelikentän
      */
     public Pelikentta pelikentta();
-    
+
     /**
-     * Siirto ylös
+     * Siirto ylös.
      */
     public void ylos();
-    
+
     /**
-     * Siirto alas
+     * Siirto alas.
      */
     public void alas();
-    
+
     /**
-     * Siirto oikealle
+     * Siirto oikealle.
      */
     public void oikea();
-    
+
     /**
-     * Siirto vasemmalle
+     * Siirto vasemmalle.
      */
     public void vasen();
-    
+
     /**
-     * Onko peli ohi?
-     * 
+     * Onko peli ohi?.
+     *
      * @return true, jos peli on ohi eikä siirtoja voi enää tehdä
      */
     public boolean peliOhi();
-    
+
     /**
-     * Tämän hetkinen pistemäärä
-     * 
+     * Tämän hetkinen pistemäärä.
+     *
      * @return pisteet
      */
     public int pisteet();

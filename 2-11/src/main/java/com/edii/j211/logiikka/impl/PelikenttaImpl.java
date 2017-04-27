@@ -18,6 +18,11 @@ public class PelikenttaImpl implements MuokattavaPelikentta {
     private int koko;
     private int[][] kentta;
 
+    /**
+     * Konstruktori uuden pelikentän toteutuksen luontiin. Vaatii parametrina
+     * vain luotavan pelikentän koon.
+     * @param koko Pelikentän koko
+     */
     public PelikenttaImpl(int koko) {
         this.koko = koko;
         this.kentta = new int[koko][koko];

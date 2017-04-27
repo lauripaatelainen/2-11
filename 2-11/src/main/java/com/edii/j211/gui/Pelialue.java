@@ -12,17 +12,35 @@ import javax.swing.JPanel;
 import static javax.swing.SwingConstants.CENTER;
 
 /**
+ * Pelialue, jolla graafinen käyttöliittymä renderöi pelin tilanteen.
  *
+ * @see GraafinenKayttoliittyma
  */
 public class Pelialue extends JPanel {
+
+    /**
+     * Peli, jota tämä Pelialue kuvastaa.
+     */
     private Peli peli;
+
+    /**
+     * Pelin jokainen ruutu näytetään omana JLabelina, tämä taulukko säilyttää
+     * jokaista ruutua edustavan JLabelin.
+     */
     private JLabel[][] ruudut;
-    
+
+    /**
+     * Ainoa konstruktori pelialueen luomiseen. Saa parametrinaan pelin, jonka
+     * avulla määräytyy minkä kokoinen pelialue tulee näyttää ja mikä pelin
+     * tilanne on.
+     *
+     * @param peli Peli, joka esitetään tällä pelialueella
+     * @see com.edii.j211.logiikka.Peli
+     */
     public Pelialue(Peli peli) {
         super(new GridLayout(peli.koko(), peli.koko()));
         this.peli = peli;
-        
-        
+
         ruudut = new JLabel[peli.koko()][peli.koko()];
 
         for (int y = 0; y < peli.koko(); y++) {
@@ -37,7 +55,15 @@ public class Pelialue extends JPanel {
         }
     }
 
+    /**
+     * Pitää sisällään eri pistearvojen näyttöön tarkoitetut edusvärit (numeron
+     * väri).
+     */
     private static final Map<Integer, Integer> EDUSVARIT = new HashMap<>();
+
+    /**
+     * Pitää sisällään eri pistearvojen näyttöön tarkoitetut taustavärit.
+     */
     private static final Map<Integer, Integer> TAUSTAVARIT = new HashMap<>();
 
     static {
@@ -56,7 +82,10 @@ public class Pelialue extends JPanel {
         TAUSTAVARIT.put(1024, 0xedc53f);
         TAUSTAVARIT.put(2048, 0xedc22e);
     }
-    
+
+    /**
+     * Päivitä pelialue vastaamaan nykytilannetta.
+     */
     public void paivita() {
         Pelikentta kentta = peli.pelikentta();
 
@@ -74,7 +103,7 @@ public class Pelialue extends JPanel {
                 } else {
                     ruudut[y][x].setText(Integer.toString(arvo));
                 }
-                
+
                 ruudut[y][x].setForeground(fg);
                 ruudut[y][x].setBackground(bg);
             }

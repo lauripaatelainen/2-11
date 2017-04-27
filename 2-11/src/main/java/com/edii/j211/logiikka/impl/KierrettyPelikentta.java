@@ -14,6 +14,10 @@ import com.edii.j211.logiikka.MuokattavaPelikentta;
 public class KierrettyPelikentta implements MuokattavaPelikentta {
     private MuokattavaPelikentta kentta;
     
+    /**
+     * Luo uuden kierretyn pelikentän.
+     * @param pelikentta Pelikenttä, joka kierretään 90 astetta myötäpäivään.
+     */
     public KierrettyPelikentta(MuokattavaPelikentta pelikentta) {
         this.kentta = pelikentta;
     }

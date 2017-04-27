@@ -1,12 +1,10 @@
 package com.edii.j211.pisterekisteri;
 
-import java.io.File;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import javax.swing.JOptionPane;
 
 /**
  * Pisterekisterin ylläpidosta vastaava luokka. Tämä luokka tarjoaa
@@ -23,6 +21,9 @@ public class PisteRekisteri {
 
     private Map<Integer, List<Tulos>> pistetaulut;
 
+    /**
+     * Luo uuden tyhjän pisterekisten.
+     */
     public PisteRekisteri() {
         this.pistetaulut = new HashMap<>();
     }
@@ -68,7 +69,8 @@ public class PisteRekisteri {
     }
 
     /**
-     * Laskee pisteillä saadun sijan top10-listalla
+     * Laskee pisteillä saadun sijan top10-listalla.
+     *
      * @param koko Pelikentän koko jolla pistemäärä saatiin
      * @param pisteet Saadut pisteet
      * @return Sija (1-10), -1 jos pisteet ei riittänyt top10-listalle.

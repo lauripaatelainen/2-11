@@ -9,6 +9,12 @@ import java.util.Scanner;
  * @see com.edii.j211.gui.GraafinenKayttoliittyma
  */
 public class Main {
+    /**
+     * main-methodi, joka luo uuden Tekstikäyttöliittymä-komennon ja käynnistää sen standardisyötteellä ja -tulosteella.
+     * 
+     * @param args Komentoriviltä annetut parametrit
+     */
+    
     public static void main(String[] args) {
         new Tekstikayttoliittyma(new Scanner(System.in), System.out).kaynnista();
     }

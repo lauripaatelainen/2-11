@@ -14,19 +14,24 @@ import java.awt.event.WindowEvent;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import java.util.Locale;
 import java.util.Map;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JTextArea;
 
 /**
- *
+ * Dialogi, joka näyttää tulokset omassa ikkunassaan.
  */
 public final class TuloksetDialogi extends JDialog {
+
+    /**
+     * Konstruktori tulosdialogin luontiin.
+     *
+     * @param owner Dialogin omistava käyttöliittymäkomponentti
+     * @param pisteRekisteri Pisterekisteri, jonka sisältö dialogilla esitetään
+     */
     public TuloksetDialogi(Frame owner, PisteRekisteri pisteRekisteri) {
         super(owner);
         this.setLayout(new BoxLayout(this.getContentPane(), BoxLayout.Y_AXIS));
@@ -35,7 +40,7 @@ public final class TuloksetDialogi extends JDialog {
 
         JLabel tulostaulu = new JLabel();
         tulostaulu.setFont(new Font("Arial", Font.PLAIN, 12));
-        
+
         Map<Integer, List<Tulos>> tulokset = pisteRekisteri.pistetaulut();
         List<Integer> keys = new ArrayList<>(tulokset.keySet());
         Collections.sort(keys);
@@ -76,7 +81,10 @@ public final class TuloksetDialogi extends JDialog {
         setTitle("Tulokset");
         setMinimumSize(new Dimension(800, 600));
     }
-    
+
+    /**
+     * Näyttää dialogin ja palautuu vasta kun dialogi suljetaan.
+     */
     public void nayta() {
         setVisible(true);
     }
