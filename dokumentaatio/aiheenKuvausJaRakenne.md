@@ -14,8 +14,19 @@ Peliä käyttää vain yksi pelaaja kerrallaan, ja ainoa toiminto jonka pelaaja 
 
 ## Ohjelman rakenne
 
+Peli jakautuu kolmeen kokonaisuuteen: käyttöliittymään, logiikkaan ja pisterekisteriin. Logiikka ja pisterekisteri ei keskustele keskenään, vaan käyttöliittymä orkestroi koko kokonaisuutta. 
+
+Logiikassa rajapinta ja toteutus on eriytetty toisistaan 'logiikka'- ja 'logiikka.impl'-paketteihin. Käyttöliittymä tulkitsee kaikki logiikan komponentit logiikka-paketista löytyvinä rajapintaolioina, lukuunottamatta uuden pelin konstruktointia, jossa joudutaan käyttämään PeliImpl-toteutuksen konstruktoria. 
+
+Logiikan sisällä Peli-olio vastaa koko pelin tilanteen hallinnasta, ja varsinaisten siirtojen tekemeninen on ulkoistattu Siirtäjä-luokalle. Siirtäjä-luokkaan on toteutettu koodina vain ylöspäin tapahtuva siirto, muihin suuntiin tapahtuvissa siirroissa hyödynnetään KierrettyPelikenttä-luokkaa, joka on Pelikenttä-rajapinnan toteuttava luokka joka kuvaa pelikentän 90 astetta käännetyksi pelikentäksi.  
+
+Pisterekisterissä yksittäinen tulos, itse rekisteri ja IO-toiminnot on hajautettu omiin luokkiinsa. Pisterekisterin formaatti noudattaa seuraavia sääntöjä:
+
+- Tiedosto sisältää kahdenlaisia rivejä: Pelikentän koon määritteleviä rivejä ja tulosrivejä.
+- Pelikentän koon määrittelevät rivit alkavat #-symbolilla jonka perään on heti pelikentän koko
+- Pelikentän kokoa seuraavat rivit ovat tulosrivejä jotka sisältävät pelaajan nimen, sarkaimen, ja saadun pistemäärän.
+
 ### Luokkakaavio
-(Käyttöliittymän ja pisterekisterin välinen yhteys on vielä toteuttamatta)
 
 ![Määrittelyvaiheen luokkakaavio](211-luokkakaavio.png "Määrittelyvaiheen luokkakaavio")
 
