@@ -16,6 +16,6 @@ Käynnistä uusi peli painamalla Uusi peli-nappia ja syötä ruutuun pelikentän
 
 ## Testiraportit
 
-[Pit-raportti](https://htmlpreview.github.io/?https://github.com/lauripaatelainen/2-11/blob/master/dokumentaatio/pit/201704202131/index.html)
+[Pit-raportti](https://htmlpreview.github.io/?https://github.com/lauripaatelainen/2-11/blob/master/dokumentaatio/pit/201704272135/index.html)
 
 [Checkstyle-raportti](https://htmlpreview.github.io/?https://github.com/lauripaatelainen/2-11/blob/master/dokumentaatio/checkstyle/checkstyle.html)
