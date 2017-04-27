@@ -14,6 +14,8 @@ Käynnistä uusi peli painamalla Uusi peli-nappia ja syötä ruutuun pelikentän
 
 [Tuntikirjanpito](dokumentaatio/tuntikirjanpito.md)
 
+[Javadoc](https://htmlpreview.github.io/?https://github.com/lauripaatelainen/2-11/blob/master/javadoc/index.html)
+
 ## Testiraportit
 
 [Pit-raportti](https://htmlpreview.github.io/?https://github.com/lauripaatelainen/2-11/blob/master/dokumentaatio/pit/201704272135/index.html)
